@@ -1,0 +1,9 @@
+
+{
+  "name": "MANAVEDIT - Cinematic Portfolio & Creative Hub",
+  "description": "A high-end cinematic portfolio for video editors featuring a Gemini-powered creative director tool to generate project treatments and style guides.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

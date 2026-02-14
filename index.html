@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MANAVEDIT — Cinematic Editorial House</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --accent: #ffffff;
+        --bg: #000000;
+        --zinc-950: #09090b;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg);
+        color: #ffffff;
+        margin: 0;
+        overflow-x: hidden;
+        cursor: none;
+      }
+      .font-syncopate {
+        font-family: 'Syncopate', sans-serif;
+      }
+      ::-webkit-scrollbar {
+        width: 3px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+      }
+      .noise {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: url('https://grainy-gradients.vercel.app/noise.svg');
+        opacity: 0.04;
+        pointer-events: none;
+        z-index: 9999;
+      }
+      .text-mask {
+        -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+        color: transparent;
+        transition: all 0.5s ease;
+      }
+      .text-mask:hover {
+        -webkit-text-stroke: 1px rgba(255,255,255,1);
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom": "https://esm.sh/react-dom@^19.2.3",
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "framer-motion": "https://esm.sh/framer-motion@^11.11.11",
+    "lucide-react": "https://esm.sh/lucide-react@^0.454.0",
+    "gsap": "https://esm.sh/gsap@^3.12.5",
+    "gsap/ScrollTrigger": "https://esm.sh/gsap@^3.12.5/ScrollTrigger",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "gsap/": "https://esm.sh/gsap@^3.14.2/"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div class="noise"></div>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
