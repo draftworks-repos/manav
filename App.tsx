@@ -93,22 +93,13 @@ const AnimatedRevealText = ({
   sizeClass?: string;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
+  const words = text.split(" ");
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      if (!textRef.current) return;
+      const wordSpans = containerRef.current?.querySelectorAll(".word");
+      if (!wordSpans || wordSpans.length === 0) return;
 
-      // Set initial HTML with animated spans
-      const words = text.split(" ");
-      textRef.current.innerHTML = words
-        .map(
-          (word) =>
-            `<span class="word inline-block mr-[0.2em] opacity-10 text-zinc-700 transition-colors">${word}</span>`,
-        )
-        .join("");
-
-      const wordSpans = textRef.current.querySelectorAll(".word");
       gsap.to(wordSpans, {
         opacity: 1,
         color: "#ffffff",
@@ -118,6 +109,8 @@ const AnimatedRevealText = ({
           start: "top 90%",
           end: "bottom 50%",
           scrub: true,
+          // Re-calculate markers when this trigger is created
+          refreshPriority: 1,
         },
       });
     }, containerRef);
@@ -126,10 +119,16 @@ const AnimatedRevealText = ({
 
   return (
     <div ref={containerRef} className={className}>
-      <h3
-        ref={textRef}
-        className={`${sizeClass} font-light leading-tight tracking-tight`}
-      ></h3>
+      <h3 className={`${sizeClass} font-light leading-tight tracking-tight`}>
+        {words.map((word, i) => (
+          <span
+            key={i}
+            className="word inline-block mr-[0.2em] opacity-10 text-zinc-700 transition-colors"
+          >
+            {word}
+          </span>
+        ))}
+      </h3>
     </div>
   );
 };
@@ -641,6 +640,15 @@ const App: React.FC = () => {
   const whatsappY = useTransform(scrollYProgress, [0, 0.01], [100, 0]);
   const whatsappOpacity = useTransform(scrollYProgress, [0, 0.01], [0, 1]);
 
+  useLayoutEffect(() => {
+    // Refresh ScrollTrigger after any view changes
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [view]);
+
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace("#", "");
@@ -720,7 +728,7 @@ const App: React.FC = () => {
           data-cursor="CHAT"
         >
           <img
-            src="/public/whatsapp-white.png"
+            src="/whatsapp-white.png"
             alt="WhatsApp"
             className="w-4 h-4 md:w-4 md:h-4 object-contain"
           />

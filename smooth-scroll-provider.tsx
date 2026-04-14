@@ -2,6 +2,10 @@
 
 import { useEffect, ReactNode } from "react";
 import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface SmoothScrollProviderProps {
   children: ReactNode;
@@ -13,23 +17,33 @@ declare global {
   }
 }
 
-export default function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
+export default function SmoothScrollProvider({
+  children,
+}: SmoothScrollProviderProps) {
   useEffect(() => {
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    });
 
     // Make Lenis instance globally available
     window.lenis = lenis;
 
-    // Original Handle global pause/resume via custom events
-    // const handleToggleNavMenu = (e) => {
-    //   if (!window.lenis) return;
-    //   if (e?.detail?.isOpen) {
-    //     window.lenis.stop();
-    //   } else {
-    //     window.lenis.start();
-    //   }
-    // };
-    // window.addEventListener("toggleNavMenu", handleToggleNavMenu);
+    // Synchronize Lenis with ScrollTrigger
+    lenis.on("scroll", ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+
     // Handle global pause/resume via custom events
     const handleToggleNavMenu = (e: Event) => {
       if (!window.lenis) return;
@@ -37,26 +51,19 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
       const isOpen = customEvent?.detail?.isOpen;
 
       if (isOpen) {
-        // stop smooth scroll
         window.lenis.stop();
-
-        // preserve scroll position and prevent background jump
         const scrollY = window.scrollY;
         document.body.style.position = "fixed";
         document.body.style.top = `-${scrollY}px`;
         document.body.style.left = "0";
         document.body.style.right = "0";
         document.body.style.overflow = "hidden";
-        (document.body.dataset as Record<string, string>).scrollY = String(scrollY);
-
-        // lock touch gestures
+        (document.body.dataset as Record<string, string>).scrollY =
+          String(scrollY);
         document.body.style.touchAction = "none";
         document.documentElement.style.touchAction = "none";
       } else {
-        // resume smooth scroll
         window.lenis.start();
-
-        // restore scroll
         const scrollY = parseInt(document.body.dataset.scrollY || "0", 10);
         document.body.style.position = "";
         document.body.style.top = "";
@@ -65,24 +72,16 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
         document.body.style.overflow = "";
         document.body.style.touchAction = "";
         document.documentElement.style.touchAction = "";
-
-        // restore scroll position
         window.scrollTo(0, scrollY);
       }
     };
 
-    // Listen for the custom event used by modals/menus to lock scrolling
     window.addEventListener("toggleNavMenu", handleToggleNavMenu);
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
 
     // Cleanup function
     return () => {
       window.removeEventListener("toggleNavMenu", handleToggleNavMenu);
+      gsap.ticker.remove(lenis.raf);
       if (window.lenis) {
         window.lenis.destroy();
         delete window.lenis;
