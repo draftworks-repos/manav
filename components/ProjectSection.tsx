@@ -69,7 +69,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ setView }) => {
                   </span>
                 </div>
 
-                <h3 className="text-5xl md:text-7xl font-syncopate font-bold tracking-tighter uppercase leading-[0.9]">
+                <h3 className="text-3xl md:text-7xl font-syncopate font-bold tracking-tighter uppercase leading-[1]">
                   {project.title}
                 </h3>
 
