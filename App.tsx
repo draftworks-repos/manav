@@ -202,7 +202,7 @@ const AboutSection = () => {
 
       {/* Narrative Column */}
       <div className="flex-1 lg:h-full bg-[#030303] flex flex-col justify-center px-8 md:px-12 lg:px-20 relative">
-        <div className="w-full lg:max-w-4xl">
+        <div className="w-full lg:max-w-4xl my-10">
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -397,7 +397,7 @@ const WorkView: React.FC<{ setView: (v: string) => void }> = ({ setView }) => (
       <span className="text-[10px] uppercase tracking-[1em] text-zinc-500 mb-6 block">
         Archive
       </span>
-      <h1 className="text-6xl md:text-[12vw] font-syncopate font-bold uppercase tracking-tighter leading-none">
+      <h1 className="text-5xl md:text-[12vw] font-syncopate font-bold uppercase tracking-tighter leading-none">
         All <br />
         <span className="text-zinc-800">Projects</span>
       </h1>
@@ -447,7 +447,7 @@ const ServicesView = () => (
     className="pt-40 px-6 md:px-12 lg:px-20 w-full"
   >
     <div className="mb-24 md:mb-40">
-      <h1 className="text-6xl md:text-[12vw] font-syncopate font-bold uppercase tracking-tighter leading-none mb-12 md:mb-20">
+      <h1 className="text-5xl md:text-[12vw] font-syncopate font-bold uppercase tracking-tighter leading-none mb-12 md:mb-20">
         Core <br />
         <span className="text-zinc-800">Services</span>
       </h1>
@@ -525,7 +525,7 @@ const ProjectDetailView: React.FC<{
             <motion.h1
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              className="text-6xl md:text-[10vw] font-syncopate font-bold uppercase tracking-tighter leading-none"
+              className="text-5xl md:text-[9vw] font-syncopate font-bold uppercase tracking-tighter leading-none"
             >
               {project.title}
             </motion.h1>
@@ -567,13 +567,34 @@ const ProjectDetailView: React.FC<{
           <p className="text-2xl md:text-3xl font-light text-zinc-300 leading-relaxed mb-16">
             {project.longDescription}
           </p>
-          <div className="aspect-video bg-zinc-900 w-full mb-20 overflow-hidden group relative">
-            <iframe
-              src={`${project.videoUrl}?autoplay=0&controls=1`}
-              className="w-full h-full border-0"
-              allow="autoplay; fullscreen"
-            />
-          </div>
+          {project.videoUrls && project.videoUrls.length > 0 ? (
+            <div
+              className={`grid grid-cols-1 ${
+                project.isVertical ? "md:grid-cols-2" : "md:grid-cols-1"
+              } gap-8 mb-20`}
+            >
+              {project.videoUrls.map((url, idx) => (
+                <div
+                  key={idx}
+                  className={`${
+                    project.isVertical ? "aspect-[9/16]" : "aspect-video"
+                  } bg-zinc-900 w-full overflow-hidden group relative border border-zinc-900`}
+                >
+                  <iframe
+                    src={`${url}?autoplay=0&controls=1`}
+                    className="w-full h-full border-0"
+                    allow="autoplay; fullscreen"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="w-full aspect-video bg-zinc-950 border border-dashed border-zinc-900 flex items-center justify-center mb-20">
+              <span className="text-4xl md:text-7xl font-syncopate font-bold text-zinc-900 uppercase tracking-tighter mix-blend-difference">
+                Coming Soon
+              </span>
+            </div>
+          )}
         </div>
         <div className="lg:col-span-5">
           <div className="bg-zinc-950 border border-zinc-900 p-12 lg:p-16 sticky top-40">
