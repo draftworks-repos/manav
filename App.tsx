@@ -183,7 +183,7 @@ const AboutSection = () => {
       <div className="relative flex-1 h-[40vh] lg:h-full border-b lg:border-b-0 lg:border-r border-zinc-900 overflow-hidden">
         <img
           ref={imgRef}
-          src="/public/manav-2.jpeg"
+          src="/manav-2.jpeg"
           className="w-full h-full object-cover"
           alt="Cinematic Camera Detail"
         />
