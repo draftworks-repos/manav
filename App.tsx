@@ -86,11 +86,13 @@ const AnimatedRevealText = ({
   className = "",
   stagger = 0.08,
   sizeClass = "text-xl md:text-3xl lg:text-4xl",
+  triggerStart = "top 90%",
 }: {
   text: string;
   className?: string;
   stagger?: number;
   sizeClass?: string;
+  triggerStart?: string;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const words = text.split(" ");
@@ -104,9 +106,10 @@ const AnimatedRevealText = ({
         opacity: 1,
         color: "#ffffff",
         stagger: stagger,
+        immediateRender: false,
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 90%",
+          start: triggerStart,
           end: "bottom 50%",
           scrub: true,
           // Re-calculate markers when this trigger is created
@@ -115,7 +118,7 @@ const AnimatedRevealText = ({
       });
     }, containerRef);
     return () => ctx.revert();
-  }, [text, stagger]);
+  }, [text, stagger, triggerStart]);
 
   return (
     <div ref={containerRef} className={className}>
@@ -372,6 +375,7 @@ const HomeView: React.FC<{ setView: (v: string) => void }> = ({ setView }) => (
           text="I bridge the gap between raw emotion and technical perfection. In the editing suite, we don't just find the cut; we find the soul of the story."
           sizeClass="text-3xl md:text-6xl lg:text-[7vw]"
           stagger={0.05}
+          triggerStart="top 70%"
         />
       </div>
     </section>
