@@ -317,7 +317,7 @@ const ReviewsSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 px-1 bg-zinc-900/50 border border-zinc-900">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 px-1 ">
           {REVIEWS.map((review, idx) => (
             <motion.div
               key={idx}
@@ -325,7 +325,7 @@ const ReviewsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: idx * 0.15 }}
-              className="bg-[#030303] p-10 md:p-12 flex flex-col justify-between aspect-square relative group overflow-hidden"
+              className="bg-[#030303] p-10 md:p-12 flex flex-col justify-between aspect-square relative group overflow-hidden border border-zinc-900"
             >
               <div className="relative z-10">
                 <Quote
