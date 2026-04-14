@@ -14,7 +14,16 @@ export const PROJECTS: ProjectExtended[] = [
     category: "Branded & Educational",
     thumbnail:
       "https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&q=80&w=1200",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/v44e8_DcF0I",
+    videoUrls: [
+      "https://www.youtube.com/embed/v44e8_DcF0I",
+      "https://www.youtube.com/embed/lAjzh9yHcSs",
+      "https://www.youtube.com/embed/qPxCKr_tGFY",
+      "https://www.youtube.com/embed/QEun7gs-sU4",
+      "https://www.youtube.com/embed/r1jDUGYIkOs",
+      "https://www.youtube.com/embed/Y4yos_YTDCg",
+    ],
+    isVertical: true,
     description:
       "High-retention talking head edits with dynamic jump cuts, kinetic captions, and narrative-driven pacing.",
     longDescription:
@@ -36,6 +45,7 @@ export const PROJECTS: ProjectExtended[] = [
     thumbnail:
       "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&q=80&w=1200",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrls: [],
     description:
       "High-impact motion graphics with clean typography, brand-aligned animations, and cinematic transitions.",
     longDescription:
@@ -51,7 +61,16 @@ export const PROJECTS: ProjectExtended[] = [
     category: "Paid Social Advertising",
     thumbnail:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/H1jD9hrA3aI",
+    videoUrls: [
+      "https://www.youtube.com/embed/H1jD9hrA3aI",
+      "https://www.youtube.com/embed/CsdgKPgnVy8",
+      "https://www.youtube.com/embed/qY0daD94VTQ",
+      "https://www.youtube.com/embed/dPdyBQ3v6rY",
+      "https://www.youtube.com/embed/-GeBgJ7lCxk",
+      "https://www.youtube.com/embed/RlQhpEgf3gA",
+    ],
+    isVertical: true,
     description:
       "Performance-driven UGC ad edits optimized for scroll-stopping hooks and high CTR.",
     longDescription:
@@ -72,7 +91,16 @@ export const PROJECTS: ProjectExtended[] = [
     category: "Social Media Content",
     thumbnail:
       "https://images.unsplash.com/photo-1589903308904-1010c2294adc?auto=format&fit=crop&q=80&w=1200",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/FvRfhINLtuA",
+    videoUrls: [
+      "https://www.youtube.com/embed/FvRfhINLtuA",
+      "https://www.youtube.com/embed/7VbjhwES7U0",
+      "https://www.youtube.com/embed/NABe2kwrsvE",
+      "https://www.youtube.com/embed/xWqABmTictw",
+      "https://www.youtube.com/embed/g650DvDzI9A",
+      "https://www.youtube.com/embed/nhBDRjESCiU",
+    ],
+    isVertical: true,
     description:
       "Short-form podcast repurposing with captions, framing optimization, and viral-ready pacing.",
     longDescription:
@@ -93,7 +121,16 @@ export const PROJECTS: ProjectExtended[] = [
     category: "Long-Form Content",
     thumbnail:
       "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1200",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/embed/sNgPUcEkzTU",
+    videoUrls: [
+      "https://www.youtube.com/embed/sNgPUcEkzTU",
+      "https://www.youtube.com/embed/Xo72ql7jKJQ",
+      "https://www.youtube.com/embed/6FZd8dM084g",
+      "https://www.youtube.com/embed/MyteOUyTm-w",
+      "https://www.youtube.com/embed/Eaytc5Uxo2Q",
+      "https://www.youtube.com/embed/TGg1LYXxoEw",
+    ],
+    isVertical: false,
     description:
       "Story-structured long-form edits engineered for retention and audience growth.",
     longDescription:
@@ -115,6 +152,7 @@ export const PROJECTS: ProjectExtended[] = [
     thumbnail:
       "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1200",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrls: [],
     description:
       "Professional cinematic color grading with mood-driven LUT design and precise tonal balancing.",
     longDescription:
