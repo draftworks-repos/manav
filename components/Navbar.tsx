@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ setView, currentView }) => {
     { label: "Work", view: "work" },
     { label: "About", view: "about" },
     { label: "Services", view: "services" },
-    { label: "AI Lab", view: "director" },
+    // { label: "AI Lab", view: "director" },
   ];
 
   const handleNavClick = (view: string) => {
