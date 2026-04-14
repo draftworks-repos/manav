@@ -810,25 +810,33 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              <div className="mt-24 lg:mt-32 flex flex-col lg:flex-row justify-between items-start gap-6 text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-600">
-                <span>
+              <div className="mt-24 lg:mt-32 flex flex-col lg:flex-row justify-between items-center gap-6 text-[9px] font-bold uppercase tracking-[0.4em] text-zinc-500 bg-zinc-900/30 border border-zinc-900/50 p-6 md:px-10 rounded-full">
+                <span className="opacity-80 text-center flex flex-col md:flex-row gap-2">
                   © 2026 MANAVEDIT — Portfolio designed & developed by
-                  <span className="text-white ml-1">Kunal Paraye</span>
+                  <span className="text-white ml-2 hover:text-zinc-400 transition-colors cursor-default">
+                    Kunal Paraye
+                  </span>
                 </span>
-                <span className="flex gap-6">
-                  <span className="text-zinc-700">DEVELOPMENT /</span>
-                  <a
-                    href="mailto:draftworks000@gmail.com"
-                    className="hover:text-white transition-colors"
-                  >
-                    EMAIL
-                  </a>
-                  <a
-                    href="https://wa.me/918959690529"
-                    className="hover:text-white transition-colors"
-                  >
-                    WHATSAPP
-                  </a>
+                <span className="flex items-center gap-8">
+                  <span className="text-zinc-700 hidden md:block">
+                    DEVELOPMENT /
+                  </span>
+                  <div className="flex gap-8">
+                    <a
+                      href="mailto:draftworks000@gmail.com"
+                      className="interactive hover:text-white transition-colors"
+                      data-cursor="EMAIL"
+                    >
+                      EMAIL
+                    </a>
+                    <a
+                      href="https://wa.me/918959690529"
+                      className="interactive hover:text-white transition-colors"
+                      data-cursor="WHATSAPP"
+                    >
+                      WHATSAPP
+                    </a>
+                  </div>
                 </span>
               </div>
             </div>
