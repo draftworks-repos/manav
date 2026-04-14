@@ -5,6 +5,8 @@ export interface Project {
   category: string;
   thumbnail: string;
   videoUrl: string;
+  videoUrls?: string[];
+  isVertical?: boolean;
   description: string;
   year: string;
 }
